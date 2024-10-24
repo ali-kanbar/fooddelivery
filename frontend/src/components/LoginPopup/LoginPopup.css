@@ -1,0 +1,85 @@
+.register-login-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.register-login-popup-content {
+  background: white;
+  position: relative;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.register-login-popup-content h2 {
+  margin-bottom: 20px;
+}
+
+.register-login-popup-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-login-popup-content input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.register-login-popup-content button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.login-popup-content button:hover ,.register-popup-buttons button:hover {
+  opacity: 0.85;
+}
+
+.register-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form p,
+.login-form p {
+  margin-top: 35px;
+  margin-bottom: -10px;
+  color: #808080;
+}
+
+.register-form p span,
+.login-form p span{
+  color: tomato;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.register-form p span:hover,
+.login-form p span:hover{
+  text-decoration: underline;
+}
