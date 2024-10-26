@@ -22,26 +22,25 @@ const LoginPopup = ({ closePopup }) => {
   const onRegisterLogin = async (event) => {
     event.preventDefault();
     const loginData = {
-      name:`${data.firstName} ${data.lastName}`,
-      email:data.email,
-      password:data.password
-    }
-    let newURl = url
-    if (registerOrLogin==="login") {
-      newURl += "/api/user/login"
+      name: `${data.firstName} ${data.lastName}`,
+      email: data.email,
+      password: data.password,
+    };
+    let newURl = url;
+    if (registerOrLogin === "login") {
+      newURl += "/api/user/login";
     } else {
-      newURl += "/api/user/register"
+      newURl += "/api/user/register";
     }
-    const response = await axios.post(newURl,loginData);
+    const response = await axios.post(newURl, loginData);
     if (response.data.success) {
-      setToken(response.data.token)
-      localStorage.setItem('token', response.data.token)
-      closePopup()
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      closePopup();
     } else {
-      alert(response.data.message)
+      alert(response.data.message);
     }
-
-  }
+  };
 
   return (
     <div className="register-login-popup-overlay">
