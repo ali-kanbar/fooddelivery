@@ -1,12 +1,3 @@
-.place-order {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  column-gap: 50px;
-  padding: 20px;
-  margin: 0 auto;
-}
-
 .place-order-left {
   flex: 1;
   padding: 20px;
@@ -14,7 +5,10 @@
 
 .place-order-form {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  column-gap: 50px;
+  padding: 20px;
 }
 
 .place-order-form-name {
@@ -53,7 +47,7 @@ h2 {
 }
 
 @media (max-width: 1050px) {
-  .place-order {
+  .place-order-form {
     flex-direction: column;
   }
 

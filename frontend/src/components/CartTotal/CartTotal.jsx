@@ -27,7 +27,7 @@ const CartTotal = () => {
           <p>${totalAmount + deliveryFee}</p>
         </div>
       </div>
-      <button onClick={() => navigate("/order")}>PROCCED TO CKECKOUT</button>
+      <button onClick={() => navigate("/order")} type="submit">PROCCED TO CKECKOUT</button>
     </div>
   );
 };
