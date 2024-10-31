@@ -48,7 +48,7 @@ const getFoodComments = async (req, res) => {
 
 const getUserComments = async (req, res) => {
   try {
-    const response = await commentModel.find({userId:req.body.userId});
+    const response = await commentModel.find({userId:req.body.userId,foodId:req.body.foodId});
     res.json({ success: true, message: response });
   } catch (error) {
     console.error(error);
