@@ -6,9 +6,12 @@ const foodSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   image: { type: String, required: true },
   category: { type: String, required: true },
+  ingredients : {type: Array, required: true},
+  rating : {type : Number, default : 5},
+  reviewsCount : {type:Number, default:0},
 });
 
 const foodModel = mongoose.models.food || mongoose.model("food",foodSchema)
-//createa a new model if it doesn't exist
+//create a new model if it doesn't exist
 
 export default foodModel;

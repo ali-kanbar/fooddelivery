@@ -83,3 +83,30 @@
 .login-form p span:hover{
   text-decoration: underline;
 }
+
+.alert-message {
+  background-color: #ffdddd; /* Light red background */
+  color: #d8000c; /* Dark red text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: -20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeOut 5s ease forwards; /* fade-out animation */
+  opacity: 1;
+}
+
+.alert-message span {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

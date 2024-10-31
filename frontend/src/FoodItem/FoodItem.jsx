@@ -1,18 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext , useState} from "react";
 import "./FoodItem.css";
 import { assets } from "../assets/assets";
 import { StoreContext } from "../context/StoreContext";
+import {useNavigate} from 'react-router-dom'
+import StarRating from "../components/StarRating/StarRating";
 
-const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
+const FoodItem = ({ id, name, price, description, image, ingredients, rating, reviewsCount, setShowLoginPopup }) => {
+  const { cartItems, addToCart, removeFromCart, url, token } = useContext(StoreContext);
+  const navigate = useNavigate()
+
+  const handleSetFood = () => {
+    navigate("/foodpage/",{state:{ id, name, price, description, image, ingredients, rating , reviewsCount}})
+  }
   return (
-    <div className="food-item">
+    <div className="food-item" >
       <div className="food-item-img-container">
-        <img className="food-item-image" src={url+"/images/"+image} alt="" />
+        <img className="food-item-image" src={url+"/images/"+image} alt="" onClick={()=>handleSetFood()}/>
         {!cartItems[id] ? (
           <img
             className="add"
-            onClick={() => addToCart(id)}
+            onClick={() => token? addToCart(id) : setShowLoginPopup(true)}
             src={assets.add_icon_white}
             alt=""
           />
@@ -35,7 +42,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <img src={assets.rating_starts} alt="" />
+          <StarRating rating={rating}/>
         </div>
         <p className="food-item-description">{description}</p>
         <p className="food-item-price">${price}</p>

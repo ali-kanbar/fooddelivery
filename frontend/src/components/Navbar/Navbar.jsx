@@ -1,19 +1,31 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "./../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 
-const Navbar = (props) => {
+const Navbar = ({ setShowLoginPopup }) => {
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
     navigate("/");
+    window.location.reload();
   };
+
   let totalAmount = getTotalCartAmount();
+  const handleNavigation = (section, menuItem) => {
+    setMenu(menuItem);
+    if (pathname !== "/") {
+      navigate("/"); // Navigate to the homepage if not already there
+    }
+    setTimeout(() => {
+      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   return (
     <div className="navbar">
@@ -29,22 +41,19 @@ const Navbar = (props) => {
           home
         </Link>
         <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
+          onClick={() => handleNavigation("explore-menu", "menu")}
           className={menu === "menu" ? "active" : ""}
         >
           menu
         </a>
         <a
-          href="#app-download"
-          onClick={() => setMenu("mobile-app")}
+          onClick={() => handleNavigation("app-download", "mobile-app")}
           className={menu === "mobile-app" ? "active" : ""}
         >
           mobile-app
         </a>
         <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
+          onClick={() => handleNavigation("footer", "contact-us")}
           className={menu === "contact-us" ? "active" : ""}
         >
           contact us
@@ -61,7 +70,7 @@ const Navbar = (props) => {
         {!token ? (
           <button
             onClick={() => {
-              props.setShowPopup(true);
+              setShowLoginPopup(true);
             }}
           >
             {" "}
@@ -71,7 +80,7 @@ const Navbar = (props) => {
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="navbar-profile-dropdown">
-              <li onClick={()=>navigate("/myorders")}>
+              <li onClick={() => navigate("/myorders")}>
                 <img src={assets.bag_icon} alt="" />
                 <p>Orders</p>
               </li>

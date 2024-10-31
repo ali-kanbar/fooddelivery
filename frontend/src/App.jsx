@@ -8,25 +8,27 @@ import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Verify from "./pages/Verify/Verify.jsx";
 import MyOrders from "./pages/MyOrders/MyOrders.jsx";
+import FoodPage from "./pages/FoodPage/FoodPage.jsx";
 
 const App = () => {
 
-  const [showPopup,setShowPopup] = useState(false)
+  const [showLoginPopup,setShowLoginPopup] = useState(false)
   
   return (
     <>
-      <div className="app" style={{ filter: showPopup ? "blur(5px)" : "none" }}>
-        <Navbar showPopup={showPopup} setShowPopup={setShowPopup}/>
+      <div className="app" style={{ filter: showLoginPopup ? "blur(5px)" : "none" }}>
+        <Navbar setShowLoginPopup={setShowLoginPopup}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home setShowLoginPopup={setShowLoginPopup}/>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<PlaceOrder />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/myorders" element={<MyOrders />} />
+          <Route path="/foodpage" element={<FoodPage setShowLoginPopup={setShowLoginPopup}/>} />
         </Routes>
       </div>
       <Footer />
-      {showPopup && <LoginPopup closePopup={() => setShowPopup(false)}/>}
+      {showLoginPopup && <LoginPopup closePopup={() => setShowLoginPopup(false)}/>}
 
     </>
     

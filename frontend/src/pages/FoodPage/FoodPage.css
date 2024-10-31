@@ -1,0 +1,144 @@
+.food-page-item {
+  display: flex;
+  column-gap: 50px;
+}
+
+.food-page-image {
+  display: block;
+  margin: 50px 0px;
+  width: 50%;
+  border-radius: 7.5%;
+  flex-shrink: 0;
+}
+
+.food-page-info {
+  margin-top: 50px;
+}
+
+.food-page-info-price {
+  font-size: 20px;
+  color: #9e9e9e;
+}
+
+.food-page-info-description {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.food-page-info-ingredients {
+  font-size: 20px;
+}
+
+.food-page-info-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.review-count {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.food-page-comment-section {
+  margin-bottom: 2rem;
+}
+
+.food-page-comment-section button {
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+  margin-top: 15px;
+}
+
+.food-page-comment {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.edit-comment-icon{
+  top: 30px;
+  right: 50px;
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.delete-comment-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+
+.delete-comment-icon:hover,
+.edit-comment-icon:hover{
+  transform: scale(1.1); ;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.comment-date {
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.review-stars {
+  margin-bottom: 0.5rem;
+}
+
+.comment-text {
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.load-more-link {
+  text-align: right;
+  color: tomato;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.load-more-link:hover {
+  opacity: 0.8;
+}
+
+
+@media (max-width: 1050px) {
+  .food-page-item {
+    flex-direction: column;
+  }
+  .food-page-image {
+    width: 100%;
+    margin: 50px auto;
+    margin-bottom: 0px;
+  }
+  .food-page-info{
+    margin-bottom: 40px;
+  }
+}

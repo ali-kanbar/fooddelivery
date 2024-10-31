@@ -57,7 +57,7 @@
   background: transparent;
   border: none;
   outline: none;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .cart-promocode-input button {
@@ -67,6 +67,7 @@
   border: none;
   color: white;
   border-radius: 10px;
+  margin-top: 0px;
 }
 
 @media (max-width: 1050px) {

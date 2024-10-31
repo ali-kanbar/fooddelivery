@@ -17,6 +17,10 @@
   font-size: 18px;
 }
 
+.navbar-menu a {
+  cursor: pointer;
+}
+
 .navbar-right {
   display: flex;
   align-items: center;
@@ -32,6 +36,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: 0.3s;
+  margin-top : auto
 }
 
 .navbar button:hover {

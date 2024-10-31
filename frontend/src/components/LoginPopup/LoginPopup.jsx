@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LoginPopup.css";
 import xIcon from "./../../assets/cross_icon.png"; // Assuming you have the X icon in your assets folder
 import { StoreContext } from "../../context/StoreContext";
@@ -6,6 +6,7 @@ import axios from "axios";
 
 const LoginPopup = ({ closePopup }) => {
   const [registerOrLogin, setRegisterOrLogin] = useState("login");
+  const [alertMessage, setAlertMessage] = useState("");
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -38,8 +39,13 @@ const LoginPopup = ({ closePopup }) => {
       localStorage.setItem("token", response.data.token);
       closePopup();
     } else {
-      alert(response.data.message);
+      setAlertMessage(response.data.message);
+      setTimeout(() => setAlertMessage(""), 5000);
     }
+  };
+
+  const clearAlert = () => {
+    setAlertMessage("");
   };
 
   return (
@@ -73,6 +79,12 @@ const LoginPopup = ({ closePopup }) => {
                 required
               />
               <button type="submit">Login</button>
+              {alertMessage && (
+                <div className="alert-message">
+                  {alertMessage}
+                  <span onClick={clearAlert}>&times;</span>
+                </div>
+              )}
               <p>
                 Create an Account ?{" "}
                 <span onClick={() => setRegisterOrLogin("register")}>
@@ -120,12 +132,19 @@ const LoginPopup = ({ closePopup }) => {
                 required
               />
               <button type="submit">Register</button>
+              {alertMessage && (
+                <div className="alert-message">
+                  {alertMessage}
+                  <span onClick={clearAlert}>&times;</span>
+                </div>
+              )}
               <p>
                 Already Have an Account ?{" "}
                 <span onClick={() => setRegisterOrLogin("login")}>
                   Click Here
                 </span>
               </p>
+              c
             </form>
           </div>
         )}
