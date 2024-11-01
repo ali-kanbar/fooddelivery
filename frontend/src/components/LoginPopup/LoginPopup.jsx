@@ -144,7 +144,6 @@ const LoginPopup = ({ closePopup }) => {
                   Click Here
                 </span>
               </p>
-              c
             </form>
           </div>
         )}
