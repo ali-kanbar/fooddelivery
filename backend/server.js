@@ -15,30 +15,7 @@ const port = process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-const allowedOrigins = [
-  'https://food-delivery-admin-94kq.onrender.com',    // admin frontend
-  'https://food-delivery-frontend-8gj3.onrender.com', // main frontend
-  'http://localhost:5173',                            // local development
-  'http://localhost:5174'                             // local development
-];
-
-// Configure CORS with specific options
-app.use(cors({
-  origin: function(origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      
-      if (allowedOrigins.includes(origin)) {
-          callback(null, true);
-      } else {
-          callback(new Error('Not allowed by CORS'));
-      }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
+app.use(cors());
 
 //DB CONNECTION
 connectDB();
